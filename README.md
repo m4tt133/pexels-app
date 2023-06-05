@@ -44,4 +44,4 @@ npm start
 
 It will spin the local server up at: [http://localhost:3000](http://localhost:3000).
 
-This project uses [`Next.js`][(https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font](https://nextjs.org/).
+This project uses [`Next.js`](https://nextjs.org/).
