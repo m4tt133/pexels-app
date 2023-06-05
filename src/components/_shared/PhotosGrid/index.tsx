@@ -1,5 +1,6 @@
 import { Photo } from 'pexels';
 import PhotoItem from '../PhotoItem';
+import GridLayout from '../GridLayout';
 
 interface IPhotosGrid {
     photos: Photo[]
@@ -8,11 +9,13 @@ interface IPhotosGrid {
 
 export default function PhotosGrid({ photos, children }: IPhotosGrid ): React.ReactElement {
     return (
-        <div className='grid grid-cols-4 gap-8'>
-            {photos.map((photo: Photo, index: number) => 
-                <PhotoItem photo={photo} key={index} />
-            )}
-            {children}
-        </div>
+        <GridLayout>
+            <>
+                {photos.map((photo: Photo, index: number) => 
+                    <PhotoItem photo={photo} key={index} />
+                )}
+                {children}
+            </>
+        </GridLayout>
     )
 }

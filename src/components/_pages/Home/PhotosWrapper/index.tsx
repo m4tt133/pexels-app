@@ -9,10 +9,11 @@ import PhotosGrid from '@/components/_shared/PhotosGrid';
 import Pagination from '@/components/_shared/Pagination';
 import Skeleton from '@/components/_shared/Skeleton';
 import PageHeading from '@/components/_shared/PageHeading';
+import SectionLayout from '@/components/_shared/SectionLayout';
 
 import { ParsedUrlQuery } from 'querystring';
 import type { Params, Photos } from 'pexels/dist/types';
-import SectionLayout from '@/components/_shared/SectionLayout';
+
 import { isError } from '@/helpers/isError';
 
 interface IPhotosWrapper {

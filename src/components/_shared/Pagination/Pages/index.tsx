@@ -5,7 +5,7 @@ interface IPages {
 }
 
 export default function Pages({ page, per, total }: IPages): React.ReactElement {
-    const pages = Math.round(total / per);
+    const pages = Math.ceil(total / per);
 
     return(
         <span className="text-[14px]">Page {page} of {pages}</span>

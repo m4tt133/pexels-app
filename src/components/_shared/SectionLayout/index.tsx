@@ -5,7 +5,7 @@ type Props = {
 
 export default function SectionLayout({ className, children }: Props){
     return(
-        <section className={`wrapper flex flex-col gap-5 ${className}`}>
+        <section className={`wrapper flex flex-col gap-5 w-full ${className ? className : ""}`}>
             {children}
         </section>
     )

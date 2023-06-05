@@ -10,9 +10,9 @@ interface IPhotoItem {
 
 export default function PhotoWrapper({ photo }: IPhotoItem ): React.ReactElement {
     return(
-        <article className='flex flex-col gap-2'>
-            <div className="w-[500px] h-[500px] relative" >
-                <Image src={photo.src.original} alt={photo.alt ? photo.alt : ""} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill style={{ objectFit: "cover", borderRadius: "20px" }}/>
+        <article className='flex flex-col gap-2 md:w-full'>
+            <div className="w-[500px] h-[500px] md:w-full md:h-[300px] relative" >
+                <Image src={photo.src.large} blurDataURL={photo.src.tiny} alt={photo.alt ? photo.alt : ""} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill style={{ objectFit: "cover", borderRadius: "20px" }}/>
             </div>
             <h1 className='text-white truncate'>{photo.alt ? photo.alt : photo.photographer}</h1>
             <p className="text-[10px]">Author: <Link href={photo.photographer_url} target='_blank'><span className='underline'>{photo.photographer}</span></Link></p>

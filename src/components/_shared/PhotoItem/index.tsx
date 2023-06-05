@@ -8,10 +8,10 @@ interface IPhotoItem {
 
 export default function PhotoItem({ photo }: IPhotoItem ): React.ReactElement {
     return (
-        <div className='flex flex-col gap-2 max-w-[300px]'>
+        <div className='flex flex-col gap-2 w-full md:w-full md:max-w-none'>
             <Link href={`/photos/${photo.id}`}>
-                <div className="w-[300px] h-[300px] relative" >
-                    <Image src={photo.src.original} alt={photo.alt ? photo.alt : ""} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill style={{ objectFit: "cover", borderRadius: "20px" }}/>
+                <div className="w-full h-[300px] relative" >
+                    <Image src={photo.src.large} blurDataURL={photo.src.tiny} alt={photo.alt ? photo.alt : ""}  fill style={{ objectFit: "cover", borderRadius: "20px" }}/>
                 </div>
             </Link>
             <h2 className='text-white truncate'>
