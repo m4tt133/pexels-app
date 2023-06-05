@@ -1,5 +1,10 @@
 This is a Recruitment Task Application for a React Developer position.
 
+## Tech Stack:
+- Typescript
+- Next.js
+- Pexels API Client Library
+
 ## Getting Started
 
 First, go to the desired directory and clone the git repository:
