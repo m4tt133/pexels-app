@@ -17,7 +17,7 @@ import type { Params, Photos } from 'pexels/dist/types';
 import { isError } from '@/helpers/isError';
 
 interface IPhotosWrapper {
-    content: Photos 
+    content: Photos & { total_results: number }
 }
 
 export default function PhotosWrapper({ content }: IPhotosWrapper ): React.ReactElement {
