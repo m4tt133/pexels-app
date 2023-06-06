@@ -12,17 +12,17 @@ import PageHeading from '@/components/_shared/PageHeading';
 import SectionLayout from '@/components/_shared/SectionLayout';
 
 import { ParsedUrlQuery } from 'querystring';
-import type { ErrorResponse, Params, Photos } from 'pexels/dist/types';
+import type { Params, Photos } from 'pexels/dist/types';
 
 import { isError } from '@/helpers/isError';
 
 interface IPhotosWrapper {
-    content: Photos
+    content: Photos & { total_results: number }
 }
 
 export default function PhotosWrapper({ content }: IPhotosWrapper ): React.ReactElement {
     const [ loading, setLoading ] = useState<boolean>(false);
-    const [ res, setRes ] = useState<typeof content | ErrorResponse>(content);
+    const [ res, setRes ] = useState<typeof content>(content);
       
     const { query } = useRouter();
 
@@ -34,11 +34,15 @@ export default function PhotosWrapper({ content }: IPhotosWrapper ): React.React
         
         const res = await client.photos.curated(parsed);
 
-        setRes(res);   
-
         setTimeout(() => {
             setLoading(false);
-        }, 300) 
+        }, 300)
+        
+        if(!isError(res)){
+            setRes(res);
+
+            return;
+        } else return null;   
     };
 
     useEffect(() => {
@@ -46,12 +50,6 @@ export default function PhotosWrapper({ content }: IPhotosWrapper ): React.React
             fetchQuery(query);
         }
     }, [query]);
-
-    if(isError(res)) return( 
-        <SectionLayout>
-          <span>Pexels API Response Error! Check the networking TAB for more information and contact the Website Administrator. Ref: https://www.pexels.com/api/documentation/</span>
-        </SectionLayout>
-    )
 
     return (
         <SectionLayout>
